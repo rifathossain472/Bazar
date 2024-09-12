@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "986623646744",
+    "project_id": "bazar-4a462",
+    "storage_bucket": "bazar-4a462.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986623646744:android:75850825bcc72f3517f76d",
+        "android_client_info": {
+          "package_name": "com.esports.bazar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0GWZK9GQdlSwASiZbWj0YpncgXympkiA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
