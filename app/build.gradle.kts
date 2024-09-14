@@ -34,6 +34,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    viewBinding {
+        enable = true
+    }
 }
 
 dependencies {
@@ -55,4 +59,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(libs.sdp.android)
+    implementation(libs.ssp.android)
+
+    implementation (libs.lottie)
 }

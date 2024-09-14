@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.esports.bazar.R
+import com.esports.bazar.databinding.FragmentLoginBinding
 
 
 class LoginFragment : Fragment() {
+
+    lateinit var binding: FragmentLoginBinding
 
 
     override fun onCreateView(
@@ -16,7 +19,11 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        binding = FragmentLoginBinding.inflate(inflater, container,false)
+
+
+
+        return binding.root
     }
 
 }
