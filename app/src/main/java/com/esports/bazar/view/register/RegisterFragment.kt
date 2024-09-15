@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.esports.bazar.R
 import com.esports.bazar.databinding.FragmentRegisterBinding
@@ -14,7 +15,8 @@ import com.esports.bazar.isEmpty
 
 class RegisterFragment : Fragment() {
 
-    lateinit var binding: FragmentRegisterBinding
+    private lateinit var binding: FragmentRegisterBinding
+    val viewModel: RegistrationViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,8 +65,22 @@ class RegisterFragment : Fragment() {
     }
 
     private fun registerUser() {
-        Toast.makeText(context, "Registration Successfully", Toast.LENGTH_SHORT).show()
-        findNavController().navigate(R.id.action_registerFragment_to_dashboardFragment)
+
+
+        val user = User(
+
+            binding.etName.text.toString(),
+            binding.etEmail.text.toString(),
+            binding.etPassword.text.toString(),
+            "Seller",
+            ""
+        )
+
+        viewModel.userRegistration(user)
+
+
+       // Toast.makeText(context, "Registration Successfully", Toast.LENGTH_SHORT).show()
+       // findNavController().navigate(R.id.action_registerFragment_to_dashboardFragment)
     }
 
     private fun passwordFocusListener() {

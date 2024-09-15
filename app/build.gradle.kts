@@ -64,4 +64,6 @@ dependencies {
     implementation(libs.ssp.android)
 
     implementation (libs.lottie)
+
+    implementation (libs.androidx.lifecycle.extensions)
 }
