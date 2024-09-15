@@ -7,8 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.fragment.findNavController
 import com.esports.bazar.R
+import com.esports.bazar.core.DataState
 import com.esports.bazar.databinding.FragmentRegisterBinding
 import com.esports.bazar.isEmpty
 
@@ -31,8 +34,26 @@ class RegisterFragment : Fragment() {
             setListener()
         }
 
+        registrationObserver()
+
 
         return binding.root
+    }
+
+    private fun registrationObserver() {
+        viewModel.registrationResponse.observe(viewLifecycleOwner){
+when(it){
+    is DataState.Error -> Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
+    is DataState.Loading -> Toast.makeText(context, "Loading...", Toast.LENGTH_SHORT).show()
+    is DataState.Success -> {
+        Toast.makeText(context, "${it.Data}", Toast.LENGTH_LONG).show()
+        //Toast.makeText(context, "Registration Successfully", Toast.LENGTH_SHORT).show()
+       // findNavController().navigate(R.id.action_registerFragment_to_dashboardFragment)
+    }
+
+
+}
+        }
     }
 
     private fun setListener() {
@@ -78,9 +99,6 @@ class RegisterFragment : Fragment() {
 
         viewModel.userRegistration(user)
 
-
-       // Toast.makeText(context, "Registration Successfully", Toast.LENGTH_SHORT).show()
-       // findNavController().navigate(R.id.action_registerFragment_to_dashboardFragment)
     }
 
     private fun passwordFocusListener() {
